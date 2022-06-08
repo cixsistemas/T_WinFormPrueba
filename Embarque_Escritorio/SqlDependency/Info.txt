@@ -3,4 +3,4 @@ ALGUN CAMBIO EN UNA TABLA DE LA BASE DE DATOS
 
 
 *** LINKS DE AYUDA
-https://stackoverflow-com.translate.goog/questions/38024866/sqldependency-onchange-not-firing-in-winform?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es-419&_x_tr_pto=sc
+https://www.youtube.com/watch?v=ACi5QZCbVhU ***FUNCIONA

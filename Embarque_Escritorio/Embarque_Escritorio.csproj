@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Embarque_Escritorio</RootNamespace>
     <AssemblyName>Embarque_Escritorio</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -71,8 +71,17 @@
       <HintPath>bin\Debug\Servicios.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SqlClient, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.3.0\lib\net46\System.Data.SqlClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
@@ -83,6 +92,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TableDependency.SqlClient, Version=8.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SqlTableDependency.8.5.8\lib\net451\TableDependency.SqlClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Acercade.cs">
@@ -216,12 +229,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="SqlDependency\EColaborador.cs" />
+    <Compile Include="SqlDependency\Personal.cs" />
     <Compile Include="SqlDependency\FormAlerta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SqlDependency\FormAlerta.Designer.cs">
       <DependentUpon>FormAlerta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SqlDependency\FormAlerta1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SqlDependency\FormAlerta1.Designer.cs">
+      <DependentUpon>FormAlerta1.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilitarios.cs" />
     <Compile Include="Vale_Viatico.cs">
@@ -309,6 +328,9 @@
     <EmbeddedResource Include="SqlDependency\FormAlerta.resx">
       <DependentUpon>FormAlerta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SqlDependency\FormAlerta1.resx">
+      <DependentUpon>FormAlerta1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vale_Viatico.resx">
       <DependentUpon>Vale_Viatico.cs</DependentUpon>
     </EmbeddedResource>
@@ -321,6 +343,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -360,6 +383,7 @@
     <None Include="Service References\ServiceReference2\WSServiciosHR.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\policia.dll" />
     <Content Include="HojaRuta\CredencialesHR.txt" />
     <Content Include="Imagenes\bus.ico" />
     <Content Include="Infoo.txt" />

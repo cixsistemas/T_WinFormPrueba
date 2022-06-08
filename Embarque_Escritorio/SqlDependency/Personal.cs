@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Embarque_Escritorio.SqlDependency
 {
-    public class EColaborador
+    public class Personal
     {
         public string CODIGO { get; set; }
         public string NroDNI { get; set; }

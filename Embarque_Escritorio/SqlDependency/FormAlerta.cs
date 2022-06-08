@@ -5,236 +5,187 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using TableDependency.SqlClient;
+using TableDependency.SqlClient.Base.Enums;
+using TableDependency.SqlClient.Base.EventArgs;
+
+
 
 namespace Embarque_Escritorio.SqlDependency
 {
     public partial class FormAlerta : Form
     {
-        private static string ConexionRuta = ConfigurationManager.AppSettings.Get("CadenaConeccionSoporte");
-        SqlConnection conexion = null;
-        public delegate void NewHome();
-        public event NewHome OnNewHome;
-
-        public delegate void NewMessage();
-        public event NewMessage OnNewMessage;
-
-        DataTable Dt_PrecioViaticos = null;
-        private void ListaPrecioRuta()
-        {
-            this.mesajeerror.ForeColor = Color.Blue;
-            policia.clsaccesodatos servidor = new policia.clsaccesodatos();
-            servidor.cadenaconexion = ConexionRuta;
-            if (servidor.abrirconexiontrans() == true)
-            {
-                if (servidor.consultar("[dbo].[_pa_lista_Colaboradores]").Tables.Count > 0)
-                    Dt_PrecioViaticos = servidor.consultar("[dbo].[_pa_lista_Colaboradores]").Tables[0];
-                if (Dt_PrecioViaticos == null)
-                {
-                    servidor.cerrarconexion();
-                    this.mesajeerror.Text = "NO HAY REGISTROS PARA MOSTRAR";
-                    this.mesajeerror.ForeColor = Color.Red;
-                }
-                else
-                {
-                    this.dataGridView1.DataSource = Dt_PrecioViaticos;
-                    int NroFilas = Dt_PrecioViaticos.Rows.Count;
-                    if (NroFilas == 0)
-                    {
-                        this.dataGridView1.DataSource = null;
-                        this.mesajeerror.Text = "NO HAY REGISTROS PARA MOSTRAR";
-                        this.mesajeerror.ForeColor = Color.Red;
-                    }
-                    else
-                    {
-                        //this.DgvLista.Columns["ID"].Visible = false;
-                        //this.DgvLista.Columns["ID_CARGO"].Visible = false;
-                        //this.DgvLista.Columns["Id_Suc_Origen"].Visible = false;
-                        //this.DgvLista.Columns["Id_Suc_Des"].Visible = false;
-
-                        this.mesajeerror.Text = "Sistema tiene " + NroFilas.ToString() + " Registro(s)";
-                    }
-                    servidor.cerrarconexion();
-                }
-            }
-            else
-            {
-                //__mesajeerror = servidor.getMensaje();
-                //servidor.cerrarconexion();
-                //MessageBox.Show(__mesajeerror, "Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
-        }
-
         public FormAlerta()
         {
             InitializeComponent();
-
-            // Create a dependency connection.
-            //System.Data.SqlClient.SqlDependency.Start(ConexionRuta);
-
-            try
-            {
-                SqlClientPermission ss = new SqlClientPermission(System.Security.Permissions.PermissionState.Unrestricted);
-                ss.Demand();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            System.Data.SqlClient.SqlDependency.Stop(ConexionRuta);
-            System.Data.SqlClient.SqlDependency.Start(ConexionRuta);
-            conexion = new SqlConnection(ConexionRuta);
         }
-     
-       
+        public SqlTableDependency<Personal> people_table_dependency;
+        private string connection_string_people = ConfigurationManager.AppSettings.Get("CadenaConeccionSoporte");
+        //string connection_string_people2 = "Data Source=ABRAHAM-VAIO;Initial Catalog = SoporteTecnico; Persist Security Info=True;User ID = sa; Password=cuevas135";
+        SqlConnection conexion = null;
         private void FormAlerta_Load(object sender, EventArgs e)
         {
-            OnNewHome += new NewHome(FormAlerta_OnNewHome);
-           ObtenerData();
+            //form load event
+            refresh_table();
+            start_people_table_dependency();
         }
 
-        private void FormAlerta_OnNewHome()
+        private void FormAlerta_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ISynchronizeInvoke i = this;
-            if (i.InvokeRequired)
-            {
-                NewHome dd = new NewHome(FormAlerta_OnNewHome);
-                i.BeginInvoke(dd, null);
-                return;
-            }
-            ObtenerData();
-        }
-
-        public DataTable ObtenerData()
-        {
-            DataTable dt = new DataTable();
             try
             {
-                // Create command
-                // Command must use two part names for tables
-                // SELECT <field> FROM dbo.Table rather than 
-                // SELECT <field> FROM Table
-                // Query also can not use *, fields must be designated
-                SqlCommand cmd = new SqlCommand
-                    ("SELECT dbo.Personal.CodigoP AS CODIGO,  dbo.Personal.NroDNI AS DNI,  dbo.Personal.ApellidoPaterno AS[APELLIDO PATERNO], dbo.Personal.ApellidoMaterno AS[APELLIDO MATERNO], dbo.Personal.Nombre AS NOMBRE, dbo.Personal.Direccion AS DIRECCION, dbo.Personal.TelefonoFijo AS TELEFONO, dbo.Personal.TelefonoMovil AS CELULAR, dbo.Personal.Login AS USUARIO FROM dbo.Personal "
-                    , conexion);
-                    //cmd.CommandType = CommandType.StoredProcedure;
+                stop_people_table_dependency();
+            }
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message.ToString());
+                //log_file(ex.ToString());
+            }
+        }
 
-                // Clear any existing notifications
-                cmd.Notification = null;
-
-                // Create the dependency for this command
-                System.Data.SqlClient.SqlDependency dependency = new System.Data.SqlClient.SqlDependency(cmd);
-
-                // Add the event handler
-                dependency.OnChange += new OnChangeEventHandler(OnChange);
-
-                // Open the connection if necessary
-                if (conexion.State == ConnectionState.Closed)
-                    conexion.Open();
-
-                // Get the messages
-                dt.Load(cmd.ExecuteReader(CommandBehavior.CloseConnection));
+        private bool start_people_table_dependency()
+        {
+            try
+            {
+                people_table_dependency = new SqlTableDependency<Personal>(connection_string_people);
+                people_table_dependency.OnChanged += people_table_dependency_Changed;
+                people_table_dependency.OnError += people_table_dependency_OnError;
+                people_table_dependency.Start();
+                return true;
             }
             catch (Exception ex)
             {
-                throw ex;
+                MessageBox.Show(ex.Message.ToString() + " start_people_table_dependency");
+                //log_file(ex.ToString());
             }
-            dataGridView1.DataSource = dt;
-            return dt;
-
-            //////servidor.CadenaConexion = CadenaConexion;
-            ////List<EColaborador> lista = new List<EColaborador>();
-
-            //try
-            //{
-            //    using (conexion = new SqlConnection(ConexionRuta))
-            //    {
-            //        using (SqlCommand comando = new SqlCommand("[dbo].[_pa_lista_Colaboradores]", conexion))
-            //        {
-            //            comando.CommandType = CommandType.StoredProcedure;
-            //            //comando.Parameters.Add(new SqlParameter());
-
-
-            //            comando.Notification = null;
-            //            System.Data.SqlClient.SqlDependency de = new System.Data.SqlClient.SqlDependency(comando);
-            //            de.OnChange += new OnChangeEventHandler(de_OnChange);
-
-            //            //System.Data.SqlClient.SqlDependency dependency = new System.Data.SqlClient.SqlDependency(comando);
-            //            //// Maintain the reference in a class member.
-
-            //            //// Subscribe to the SqlDependency event.
-            //            //dependency.OnChange += new
-            //            //   OnChangeEventHandler(OnDependencyChange);
-            //            conexion.Open();
-            //            dt.Load(comando.ExecuteReader(CommandBehavior.CloseConnection));
-            //            //SqlDataReader reader = comando.ExecuteReader();
-            //            //while (reader.Read())
-            //            //{
-            //            //    EColaborador entidad = new EColaborador();
-            //            //    entidad.CODIGO = Convert.ToString(reader["CODIGO"]);
-            //            //    //entidad.NroDNI = Convert.ToString(reader["NroDNI"]);
-            //            //    entidad.NOMBRE = Convert.ToString(reader["NOMBRE"]);
-            //            //    entidad.DIRECCION = Convert.ToString(reader["DIRECCION"]);
-            //            //    entidad.TELEFONO = Convert.ToString(reader["TELEFONO"]);
-            //            //    lista.Add(entidad);
-            //            //}
-            //        }
-            //    }
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    ex.Message.ToString();
-            //    //throw;
-            //}
-            //finally
-            //{
-            //    //conexion.Close();
-            //}
-            //dataGridView1.DataSource = dt;
-            ////return lista;
+            return false;
 
         }
-
-
-        void OnChange(object sender, SqlNotificationEventArgs e)
+        private bool stop_people_table_dependency()
         {
-            System.Data.SqlClient.SqlDependency dependency = sender as System.Data.SqlClient.SqlDependency;
-
-            // Notices are only a one shot deal
-            // so remove the existing one so a new 
-            // one can be added
-            dependency.OnChange -= OnChange;
-
-            // Fire the event
-            if (OnNewMessage != null)
+            try
             {
-                OnNewMessage();
+                if (people_table_dependency != null)
+                {
+                    people_table_dependency.Stop();
+
+                    return true;
+                }
             }
-        }
+            catch (Exception ex) {
+               // log_file(ex.ToString());
+            }
 
-        public void de_OnChange(object sender, SqlNotificationEventArgs e)
+            return false;
+
+        }
+        private void people_table_dependency_OnError(object sender, ErrorEventArgs e)
         {
-            System.Data.SqlClient.SqlDependency de = sender as System.Data.SqlClient.SqlDependency;
-            de.OnChange -= de_OnChange;
-            OnNewHome?.Invoke();
-
+            MessageBox.Show(e.Error.Message.ToString() + " ...");
+            //log_file(e.Error.Message);
         }
-        // Handler method
-        void OnDependencyChange(object sender,
-           SqlNotificationEventArgs e)
+        public void log_file(string logText)
         {
-            // Handle the event (for example, invalidate this cache entry).
+            // logText += DateTime.Now.ToString() + Environment.NewLine + logText;
+            ThreadSafe(() => richTextBox1.AppendText(DateTime.Now.ToString("HH:mm:ss:fff") + "\t" + logText + Environment.NewLine));
+            System.IO.File.AppendAllText(Application.StartupPath + "\\log.txt", logText);
+
+        }
+        private void people_table_dependency_Changed(object sender, RecordChangedEventArgs<Personal> e)
+        {
+            try
+            {
+                var changedEntity = e.Entity;
+
+                switch (e.ChangeType)
+                {
+                    case ChangeType.Insert:
+                        {
+
+                            //log_file("Insert values:\tname:" + changedEntity.NroDNI.ToString() 
+                            //    + "\tage:" + changedEntity.NroDNI.ToString());
+                            refresh_table();
+
+                        }
+                        break;
+
+                    case ChangeType.Update:
+                        {
+                            //log_file("Update values:\tname:" + changedEntity.NOMBRE.ToString() 
+                            //    + "\tage:" + changedEntity.NOMBRE.ToString());
+                            refresh_table();
+
+                        }
+                        break;
+
+                    case ChangeType.Delete:
+                        {
+                            //log_file("Delete values:\tname:" + changedEntity.DIRECCION.ToString() 
+                            //    + "\tage:" + changedEntity.DIRECCION.ToString());
+                            refresh_table();
+                        }
+                        break;
+                };
+
+            }
+            catch (Exception ex) { log_file(ex.ToString()); }
+        }
+        private void refresh_table()
+        {
+            DataTable dt = new DataTable();
+            SqlDataReader leer;
+            //SqlCommand comando = new SqlCommand();
+
+            //comando.Connection = conexion;
+            //conexion.Open();
+            //comando.CommandText = "_pa_lista_Colaboradores";
+            //comando.CommandType = CommandType.StoredProcedure;
+            //leer = comando.ExecuteReader();
+            //dt.Load(leer);
+            //conexion.Close();
+            //dataGridView1.DataSource = dt;
+
+            using (conexion = new SqlConnection(connection_string_people))
+            {
+                using (SqlCommand comando = new SqlCommand("[dbo].[_pa_lista_Colaboradores]", conexion))
+                {
+                    if (conexion.State == ConnectionState.Closed)
+                        conexion.Open();
+
+                    dt.Load(comando.ExecuteReader(CommandBehavior.CloseConnection));
+                    conexion.Close();
+                    //dataGridView1.DataSource = dt;
+                    ThreadSafe(() => dataGridView1.DataSource = dt);
+
+                }
+            }
+
+
+            //string sql = "SELECT * FROM Personal";
+            //SqlConnection connection = new SqlConnection(connection_string_people);
+            //SqlDataAdapter dataadapter = new SqlDataAdapter(sql, connection);
+            //DataSet ds = new DataSet();
+            //connection.Open();
+            //dataadapter.Fill(ds, "Personal");
+            //connection.Close();
+            //ThreadSafe(() => dataGridView1.DataSource = ds);
+            //ThreadSafe(() => dataGridView1.DataMember = "Personal");
         }
 
-        ////void Termination()
-        ////{
-        ////    // Release the dependency.
-        ////    System.Data.SqlClient.SqlDependency.Stop(ConexionRuta);
-        ////}
+        private void ThreadSafe(MethodInvoker method)
+        {
+            try
+            {
+                if (InvokeRequired)
+                    Invoke(method);
+                else
+                    method();
+            }
+            catch (ObjectDisposedException) { }
+        }
 
     }
 }

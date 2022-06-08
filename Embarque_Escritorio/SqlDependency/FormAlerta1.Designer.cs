@@ -1,6 +1,6 @@
 ﻿namespace Embarque_Escritorio.SqlDependency
 {
-    partial class FormAlerta
+    partial class FormAlerta1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,45 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAlerta1));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.mesajeerror = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(27, 37);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(751, 172);
+            this.dataGridView1.Size = new System.Drawing.Size(822, 253);
             this.dataGridView1.TabIndex = 1;
             // 
-            // richTextBox1
+            // mesajeerror
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(0, 231);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(751, 163);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.mesajeerror.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.mesajeerror.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mesajeerror.Location = new System.Drawing.Point(23, 312);
+            this.mesajeerror.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.mesajeerror.Name = "mesajeerror";
+            this.mesajeerror.Size = new System.Drawing.Size(826, 27);
+            this.mesajeerror.TabIndex = 396;
+            this.mesajeerror.Text = "Label 1";
+            this.mesajeerror.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormAlerta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 393);
-            this.Controls.Add(this.richTextBox1);
+            this.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.ClientSize = new System.Drawing.Size(880, 383);
+            this.Controls.Add(this.mesajeerror);
             this.Controls.Add(this.dataGridView1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAlerta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alerta";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAlerta_FormClosing);
             this.Load += new System.EventHandler(this.FormAlerta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -76,6 +79,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        internal System.Windows.Forms.Label mesajeerror;
     }
 }
