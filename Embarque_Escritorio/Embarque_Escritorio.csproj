@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Embarque_Escritorio</RootNamespace>
     <AssemblyName>Embarque_Escritorio</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publicar\</PublishUrl>
     <Install>true</Install>
@@ -38,6 +39,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -47,6 +49,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Imagenes\bus.ico</ApplicationIcon>
@@ -213,6 +216,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="SqlDependency\EColaborador.cs" />
+    <Compile Include="SqlDependency\FormAlerta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SqlDependency\FormAlerta.Designer.cs">
+      <DependentUpon>FormAlerta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilitarios.cs" />
     <Compile Include="Vale_Viatico.cs">
       <SubType>Form</SubType>
@@ -288,12 +298,16 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Mantenimiento\Trabajador_Huella1.resx">
       <DependentUpon>Trabajador_Huella1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mantenimiento\Trabajador_Huella2.resx">
       <DependentUpon>Trabajador_Huella2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SqlDependency\FormAlerta.resx">
+      <DependentUpon>FormAlerta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vale_Viatico.resx">
       <DependentUpon>Vale_Viatico.cs</DependentUpon>
@@ -349,6 +363,7 @@
     <Content Include="HojaRuta\CredencialesHR.txt" />
     <Content Include="Imagenes\bus.ico" />
     <Content Include="Infoo.txt" />
+    <Content Include="SqlDependency\Info.txt" />
     <None Include="Service References\ServiceReference2\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
