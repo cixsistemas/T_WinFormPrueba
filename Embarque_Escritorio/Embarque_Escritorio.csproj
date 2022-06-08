@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{58987673-6951-41CA-86F4-33BC72C06C88}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Embarque_Escritorio</RootNamespace>
+    <AssemblyName>Embarque_Escritorio</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publicar\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Imagenes\bus.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.ZKFPEngXControl, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AxInterop.ZKFPEngXControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="policia, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\policia.dll</HintPath>
+    </Reference>
+    <Reference Include="Servicios, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Servicios.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Acercade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Acercade.Designer.cs">
+      <DependentUpon>Acercade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HojaRuta\MTC.DataAccess\HojaRutaData.cs" />
+    <Compile Include="HojaRuta\CsConductor.cs" />
+    <Compile Include="HojaRuta\CsCredenciales.cs" />
+    <Compile Include="HojaRuta\Entities\EmpresaEntity.cs" />
+    <Compile Include="HojaRuta\Entities\HojaRutaEntity.cs" />
+    <Compile Include="HojaRuta\Entities\MensajesEntity.cs" />
+    <Compile Include="HojaRuta\Entities\TrabajadoresEntity.cs" />
+    <Compile Include="HojaRuta\FrmDesencriptar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HojaRuta\FrmDesencriptar.Designer.cs">
+      <DependentUpon>FrmDesencriptar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HojaRuta\FrmHRValidarChofer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HojaRuta\FrmHRValidarChofer.Designer.cs">
+      <DependentUpon>FrmHRValidarChofer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HojaRuta\FrmHRVFinalizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HojaRuta\FrmHRVFinalizar.Designer.cs">
+      <DependentUpon>FrmHRVFinalizar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HojaRuta\FrmMenuPasajes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HojaRuta\FrmMenuPasajes.Designer.cs">
+      <DependentUpon>FrmMenuPasajes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HojaRuta\MTC.BusinessLayer\HojaRutaLogic.cs" />
+    <Compile Include="HojaRuta\Others\Response.cs" />
+    <Compile Include="HojaRuta\Peticiones\Responses\HojaRutaResponse.cs" />
+    <Compile Include="HojaRuta\Usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HojaRuta\Usuario.Designer.cs">
+      <DependentUpon>Usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\CsSeguridad.cs" />
+    <Compile Include="Clases\CsUsuario.cs" />
+    <Compile Include="Clssistema.cs" />
+    <Compile Include="Embarque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Embarque.Designer.cs">
+      <DependentUpon>Embarque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmbarqueEquipajes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmbarqueEquipajes.Designer.cs">
+      <DependentUpon>EmbarqueEquipajes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Encriptar.cs" />
+    <Compile Include="HojaRuta\Utility\DataReader.cs" />
+    <Compile Include="Listar\ListarCargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listar\ListarCargo.Designer.cs">
+      <DependentUpon>ListarCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listar\ListarDestino.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listar\ListarDestino.Designer.cs">
+      <DependentUpon>ListarDestino.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listar\ListarOrigen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listar\ListarOrigen.Designer.cs">
+      <DependentUpon>ListarOrigen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listar\ListarSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listar\ListarSucursal.Designer.cs">
+      <DependentUpon>ListarSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listar\ListarTrabajador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listar\ListarTrabajador.Designer.cs">
+      <DependentUpon>ListarTrabajador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMenu.Designer.cs">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Programacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Programacion.Designer.cs">
+      <DependentUpon>Programacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Mantenimiento\Trabajador_Huella1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Trabajador_Huella1.Designer.cs">
+      <DependentUpon>Trabajador_Huella1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\Trabajador_Huella2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\Trabajador_Huella2.Designer.cs">
+      <DependentUpon>Trabajador_Huella2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reutilizable\CsReutilizar.cs" />
+    <Compile Include="Service References\ServiceReference2\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Utilitarios.cs" />
+    <Compile Include="Vale_Viatico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vale_Viatico.Designer.cs">
+      <DependentUpon>Vale_Viatico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\ViaticoCostoRuta1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\ViaticoCostoRuta1.Designer.cs">
+      <DependentUpon>ViaticoCostoRuta1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mantenimiento\ViaticoCostoRuta2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mantenimiento\ViaticoCostoRuta2.Designer.cs">
+      <DependentUpon>ViaticoCostoRuta2.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Acercade.resx">
+      <DependentUpon>Acercade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HojaRuta\FrmDesencriptar.resx">
+      <DependentUpon>FrmDesencriptar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HojaRuta\FrmHRValidarChofer.resx">
+      <DependentUpon>FrmHRValidarChofer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HojaRuta\FrmHRVFinalizar.resx">
+      <DependentUpon>FrmHRVFinalizar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HojaRuta\FrmMenuPasajes.resx">
+      <DependentUpon>FrmMenuPasajes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HojaRuta\Usuario.resx">
+      <DependentUpon>Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Embarque.resx">
+      <DependentUpon>Embarque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmbarqueEquipajes.resx">
+      <DependentUpon>EmbarqueEquipajes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listar\ListarCargo.resx">
+      <DependentUpon>ListarCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listar\ListarDestino.resx">
+      <DependentUpon>ListarDestino.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listar\ListarOrigen.resx">
+      <DependentUpon>ListarOrigen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listar\ListarSucursal.resx">
+      <DependentUpon>ListarSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listar\ListarTrabajador.resx">
+      <DependentUpon>ListarTrabajador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMenu.resx">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Programacion.resx">
+      <DependentUpon>Programacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Mantenimiento\Trabajador_Huella1.resx">
+      <DependentUpon>Trabajador_Huella1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\Trabajador_Huella2.resx">
+      <DependentUpon>Trabajador_Huella2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vale_Viatico.resx">
+      <DependentUpon>Vale_Viatico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\ViaticoCostoRuta1.resx">
+      <DependentUpon>ViaticoCostoRuta1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mantenimiento\ViaticoCostoRuta2.resx">
+      <DependentUpon>ViaticoCostoRuta2.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\ServiceReference2\Embarque_Escritorio.ServiceReference2.ResultAnular.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference2\Embarque_Escritorio.ServiceReference2.ResultConductor.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference2\Embarque_Escritorio.ServiceReference2.ResultFinalizar.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference2\Embarque_Escritorio.ServiceReference2.ResultHojaRuta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference2\Embarque_Escritorio.ServiceReference2.ResultIncidencia.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference2\Embarque_Escritorio.ServiceReference2.ResultManifiesto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference2\Embarque_Escritorio.ServiceReference2.ResultParametro.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference2\Embarque_Escritorio.ServiceReference2.ResultTripulante.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference2\Embarque_Escritorio.ServiceReference2.ResultVehiculo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference2\WSServiciosHR.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HojaRuta\CredencialesHR.txt" />
+    <Content Include="Imagenes\bus.ico" />
+    <Content Include="Infoo.txt" />
+    <None Include="Service References\ServiceReference2\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceReference2\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference2\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference2\WSServiciosHR.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuraciones\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference2\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

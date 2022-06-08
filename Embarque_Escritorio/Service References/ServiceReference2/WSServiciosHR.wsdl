@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://wshr.mtc.gob.pe/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://wshr.mtc.gob.pe/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://wshr.mtc.gob.pe/">
+      <s:element name="getConductor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oConductor" type="tns:Conductor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Conductor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Seguridad" type="tns:Seguridad" />
+          <s:element minOccurs="0" maxOccurs="1" name="TpoDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroDocumento" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Seguridad">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Ruc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Clave" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Partida" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getConductorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getConductorResult" type="tns:ResultConductor" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultConductor">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Return" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errores" type="tns:ArrayOfErrores" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfErrores">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Errores" nillable="true" type="tns:Errores" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Errores">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Info" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getParametro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oParametro" type="tns:Parametro" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Parametro">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Seguridad" type="tns:Seguridad" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getParametroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParametroResult" type="tns:ResultParametro" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultParametro">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Return" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errores" type="tns:ArrayOfErrores" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rutas" type="tns:ArrayOfRuta" />
+          <s:element minOccurs="0" maxOccurs="1" name="Terminales" type="tns:ArrayOfTerminal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Documentos" type="tns:ArrayOfDocumento" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoIncidencias" type="tns:ArrayOfTipoIncidencia" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRuta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ruta" nillable="true" type="tns:Ruta" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Ruta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Info" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTerminal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Terminal" nillable="true" type="tns:Terminal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Terminal">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Info" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDocumento">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Documento" nillable="true" type="tns:Documento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Documento">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Info" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTipoIncidencia">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TipoIncidencia" nillable="true" type="tns:TipoIncidencia" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TipoIncidencia">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Info" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getVehiculo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oVehiculo" type="tns:Vehiculo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Vehiculo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Seguridad" type="tns:Seguridad" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroPlaca" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getVehiculoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getVehiculoResult" type="tns:ResultVehiculo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultVehiculo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Return" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errores" type="tns:ArrayOfErrores" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setAnular">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oAnular" type="tns:Anular" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Anular">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Seguridad" type="tns:Seguridad" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setAnularResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setAnularResult" type="tns:ResultAnular" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultAnular">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Return" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errores" type="tns:Errores" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setFinalizar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oFinalizar" type="tns:Finalizar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Finalizar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Seguridad" type="tns:Seguridad" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecLlegada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorLlegada" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setFinalizarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setFinalizarResult" type="tns:ResultFinalizar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultFinalizar">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Return" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errores" type="tns:ArrayOfErrores" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setHojaRuta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oHojaRuta" type="tns:HojaRuta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="HojaRuta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Seguridad" type="tns:Seguridad" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroRuta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroPlaca" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TerSalida" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TerLlegada" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecSalida" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorSalida" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecEstLlegada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorEstLlegada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conductores" type="tns:ArrayOfHConductor" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tripulantes" type="tns:ArrayOfHTripulante" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfHConductor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HConductor" nillable="true" type="tns:HConductor" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HConductor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TpoDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecInicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorInicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecTermino" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorTermino" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfHTripulante">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HTripulante" nillable="true" type="tns:HTripulante" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HTripulante">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TpoDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroDocumento" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setHojaRutaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setHojaRutaResult" type="tns:ResultHojaRuta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultHojaRuta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Return" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errores" type="tns:ArrayOfErrores" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setHojaRutaInt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oHojaRutaInt" type="tns:HojaRutaInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="HojaRutaInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Seguridad" type="tns:Seguridad" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroHojaRuta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HRAnio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conductores" type="tns:ArrayOfHConductor" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setHojaRutaIntResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setHojaRutaIntResult" type="tns:ResultHojaRuta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setManifiesto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oManifiesto" type="tns:Manifiesto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Manifiesto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Seguridad" type="tns:Seguridad" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroRuta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroPlaca" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TerSalida" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TerLlegada" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecSalida" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorSalida" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecEstLlegada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorEstLlegada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Conductores" type="tns:ArrayOfMConductor" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tripulantes" type="tns:ArrayOfMTripulante" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pasajeros" type="tns:ArrayOfMPasajero" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMConductor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MConductor" nillable="true" type="tns:MConductor" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MConductor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TpoDoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroDoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecInicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorInicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecTermino" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorTermino" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMTripulante">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MTripulante" nillable="true" type="tns:MTripulante" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MTripulante">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TpoDoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroDoc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMPasajero">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MPasajero" nillable="true" type="tns:MPasajero" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MPasajero">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TpoDoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroDoc" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Paterno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Materno" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerBol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumBol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MtoBol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AsiBol" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setManifiestoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setManifiestoResult" type="tns:ResultManifiesto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultManifiesto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Return" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errores" type="tns:Errores" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setTripulante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oTripulante" type="tns:Tripulante" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Tripulante">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Seguridad" type="tns:Seguridad" />
+          <s:element minOccurs="0" maxOccurs="1" name="TpoDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FecNac" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setTripulanteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setTripulanteResult" type="tns:ResultTripulante" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultTripulante">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Return" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errores" type="tns:ArrayOfErrores" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setIncidencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="oIncidencia" type="tns:Incidencia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Incidencia">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Seguridad" type="tns:Seguridad" />
+          <s:element minOccurs="0" maxOccurs="1" name="NroHojaRuta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HRAnio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdTipo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fecha" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hora" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Motivo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lugar" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Archivo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="setIncidenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="setIncidenciaResult" type="tns:ResultIncidencia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResultIncidencia">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Return" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errores" type="tns:ArrayOfErrores" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getConductorSoapIn">
+    <wsdl:part name="parameters" element="tns:getConductor" />
+  </wsdl:message>
+  <wsdl:message name="getConductorSoapOut">
+    <wsdl:part name="parameters" element="tns:getConductorResponse" />
+  </wsdl:message>
+  <wsdl:message name="getParametroSoapIn">
+    <wsdl:part name="parameters" element="tns:getParametro" />
+  </wsdl:message>
+  <wsdl:message name="getParametroSoapOut">
+    <wsdl:part name="parameters" element="tns:getParametroResponse" />
+  </wsdl:message>
+  <wsdl:message name="getVehiculoSoapIn">
+    <wsdl:part name="parameters" element="tns:getVehiculo" />
+  </wsdl:message>
+  <wsdl:message name="getVehiculoSoapOut">
+    <wsdl:part name="parameters" element="tns:getVehiculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="setAnularSoapIn">
+    <wsdl:part name="parameters" element="tns:setAnular" />
+  </wsdl:message>
+  <wsdl:message name="setAnularSoapOut">
+    <wsdl:part name="parameters" element="tns:setAnularResponse" />
+  </wsdl:message>
+  <wsdl:message name="setFinalizarSoapIn">
+    <wsdl:part name="parameters" element="tns:setFinalizar" />
+  </wsdl:message>
+  <wsdl:message name="setFinalizarSoapOut">
+    <wsdl:part name="parameters" element="tns:setFinalizarResponse" />
+  </wsdl:message>
+  <wsdl:message name="setHojaRutaSoapIn">
+    <wsdl:part name="parameters" element="tns:setHojaRuta" />
+  </wsdl:message>
+  <wsdl:message name="setHojaRutaSoapOut">
+    <wsdl:part name="parameters" element="tns:setHojaRutaResponse" />
+  </wsdl:message>
+  <wsdl:message name="setHojaRutaIntSoapIn">
+    <wsdl:part name="parameters" element="tns:setHojaRutaInt" />
+  </wsdl:message>
+  <wsdl:message name="setHojaRutaIntSoapOut">
+    <wsdl:part name="parameters" element="tns:setHojaRutaIntResponse" />
+  </wsdl:message>
+  <wsdl:message name="setManifiestoSoapIn">
+    <wsdl:part name="parameters" element="tns:setManifiesto" />
+  </wsdl:message>
+  <wsdl:message name="setManifiestoSoapOut">
+    <wsdl:part name="parameters" element="tns:setManifiestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="setTripulanteSoapIn">
+    <wsdl:part name="parameters" element="tns:setTripulante" />
+  </wsdl:message>
+  <wsdl:message name="setTripulanteSoapOut">
+    <wsdl:part name="parameters" element="tns:setTripulanteResponse" />
+  </wsdl:message>
+  <wsdl:message name="setIncidenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:setIncidencia" />
+  </wsdl:message>
+  <wsdl:message name="setIncidenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:setIncidenciaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WSServiciosHRSoap">
+    <wsdl:operation name="getConductor">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Informacion de Conductor por Empresa de Transporte.</wsdl:documentation>
+      <wsdl:input message="tns:getConductorSoapIn" />
+      <wsdl:output message="tns:getConductorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getParametro">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Informacion de Parametro por Empresa de Transporte.</wsdl:documentation>
+      <wsdl:input message="tns:getParametroSoapIn" />
+      <wsdl:output message="tns:getParametroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getVehiculo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Informacion de Vehiculo por Empresa de Transporte.</wsdl:documentation>
+      <wsdl:input message="tns:getVehiculoSoapIn" />
+      <wsdl:output message="tns:getVehiculoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setAnular">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Anulacion de Hoja Ruta por Empresa de Transporte.</wsdl:documentation>
+      <wsdl:input message="tns:setAnularSoapIn" />
+      <wsdl:output message="tns:setAnularSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setFinalizar">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Finalizacion de Hoja Ruta por Empresa de Transporte.</wsdl:documentation>
+      <wsdl:input message="tns:setFinalizarSoapIn" />
+      <wsdl:output message="tns:setFinalizarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setHojaRuta">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registro de Hoja Ruta por Empresa de Transporte.</wsdl:documentation>
+      <wsdl:input message="tns:setHojaRutaSoapIn" />
+      <wsdl:output message="tns:setHojaRutaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setHojaRutaInt">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registro de Hoja Ruta por Empresa de Transporte con Viaje por más de 24 horas.</wsdl:documentation>
+      <wsdl:input message="tns:setHojaRutaIntSoapIn" />
+      <wsdl:output message="tns:setHojaRutaIntSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setManifiesto">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registro de Manifiesto por Empresa de Transporte.</wsdl:documentation>
+      <wsdl:input message="tns:setManifiestoSoapIn" />
+      <wsdl:output message="tns:setManifiestoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setTripulante">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registro de Tripulante por Empresa de Transporte.</wsdl:documentation>
+      <wsdl:input message="tns:setTripulanteSoapIn" />
+      <wsdl:output message="tns:setTripulanteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setIncidencia">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Registro de Incidencias.</wsdl:documentation>
+      <wsdl:input message="tns:setIncidenciaSoapIn" />
+      <wsdl:output message="tns:setIncidenciaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WSServiciosHRSoap" type="tns:WSServiciosHRSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getConductor">
+      <soap:operation soapAction="http://wshr.mtc.gob.pe/getConductor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParametro">
+      <soap:operation soapAction="http://wshr.mtc.gob.pe/getParametro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVehiculo">
+      <soap:operation soapAction="http://wshr.mtc.gob.pe/getVehiculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAnular">
+      <soap:operation soapAction="http://wshr.mtc.gob.pe/setAnular" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setFinalizar">
+      <soap:operation soapAction="http://wshr.mtc.gob.pe/setFinalizar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHojaRuta">
+      <soap:operation soapAction="http://wshr.mtc.gob.pe/setHojaRuta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHojaRutaInt">
+      <soap:operation soapAction="http://wshr.mtc.gob.pe/setHojaRutaInt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setManifiesto">
+      <soap:operation soapAction="http://wshr.mtc.gob.pe/setManifiesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setTripulante">
+      <soap:operation soapAction="http://wshr.mtc.gob.pe/setTripulante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setIncidencia">
+      <soap:operation soapAction="http://wshr.mtc.gob.pe/setIncidencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSServiciosHRSoap12" type="tns:WSServiciosHRSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getConductor">
+      <soap12:operation soapAction="http://wshr.mtc.gob.pe/getConductor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParametro">
+      <soap12:operation soapAction="http://wshr.mtc.gob.pe/getParametro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVehiculo">
+      <soap12:operation soapAction="http://wshr.mtc.gob.pe/getVehiculo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setAnular">
+      <soap12:operation soapAction="http://wshr.mtc.gob.pe/setAnular" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setFinalizar">
+      <soap12:operation soapAction="http://wshr.mtc.gob.pe/setFinalizar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHojaRuta">
+      <soap12:operation soapAction="http://wshr.mtc.gob.pe/setHojaRuta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHojaRutaInt">
+      <soap12:operation soapAction="http://wshr.mtc.gob.pe/setHojaRutaInt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setManifiesto">
+      <soap12:operation soapAction="http://wshr.mtc.gob.pe/setManifiesto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setTripulante">
+      <soap12:operation soapAction="http://wshr.mtc.gob.pe/setTripulante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setIncidencia">
+      <soap12:operation soapAction="http://wshr.mtc.gob.pe/setIncidencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WSServiciosHR">
+    <wsdl:port name="WSServiciosHRSoap" binding="tns:WSServiciosHRSoap">
+      <soap:address location="https://wshr.mtc.gob.pe/WSServiciosHR.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WSServiciosHRSoap12" binding="tns:WSServiciosHRSoap12">
+      <soap12:address location="https://wshr.mtc.gob.pe/WSServiciosHR.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

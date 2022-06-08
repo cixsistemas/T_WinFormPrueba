@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://wshr.mtc.gob.pe/WSServiciosHR.asmx?wsdl" docRef="https://wshr.mtc.gob.pe/WSServiciosHR.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://wshr.mtc.gob.pe/WSServiciosHR.asmx" xmlns:q1="http://wshr.mtc.gob.pe/" binding="q1:WSServiciosHRSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://wshr.mtc.gob.pe/WSServiciosHR.asmx" xmlns:q2="http://wshr.mtc.gob.pe/" binding="q2:WSServiciosHRSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
