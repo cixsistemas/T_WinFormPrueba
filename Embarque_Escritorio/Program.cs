@@ -1,5 +1,6 @@
 ﻿using Embarque_Escritorio.BDPasajes;
 using Embarque_Escritorio.SqlDependency;
+using Embarque_Escritorio.Sunat.TipoCambio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Embarque_Escritorio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FrmMenuPasajes());
-            Application.Run(new FormAlerta());
+            Application.Run(new TipoCambio());
         }
     }
 }
