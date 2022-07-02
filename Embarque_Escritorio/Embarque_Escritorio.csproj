@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Embarque_Escritorio</RootNamespace>
     <AssemblyName>Embarque_Escritorio</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -62,6 +62,10 @@
     <Reference Include="Microsoft.VisualBasic">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="policia, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\policia.dll</HintPath>
@@ -84,6 +88,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -248,6 +253,14 @@
     <Compile Include="SqlDependency\FormAlerta1.Designer.cs">
       <DependentUpon>FormAlerta1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Sunat\TipoCambio\DBApi.cs" />
+    <Compile Include="Sunat\TipoCambio\ETipoCambio.cs" />
+    <Compile Include="Sunat\TipoCambio\TipoCambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\TipoCambio\TipoCambio.Designer.cs">
+      <DependentUpon>TipoCambio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilitarios.cs" />
     <Compile Include="Vale_Viatico.cs">
       <SubType>Form</SubType>
@@ -339,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SqlDependency\FormAlerta1.resx">
       <DependentUpon>FormAlerta1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\TipoCambio\TipoCambio.resx">
+      <DependentUpon>TipoCambio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vale_Viatico.resx">
       <DependentUpon>Vale_Viatico.cs</DependentUpon>
