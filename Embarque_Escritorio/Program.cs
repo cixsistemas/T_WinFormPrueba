@@ -1,4 +1,5 @@
 ﻿using Embarque_Escritorio.BDPasajes;
+using Embarque_Escritorio.Contabilidad;
 using Embarque_Escritorio.SqlDependency;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace Embarque_Escritorio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FrmMenuPasajes());
-            Application.Run(new FormAlerta());
+            Application.Run(new PruebaConta());
         }
     }
 }

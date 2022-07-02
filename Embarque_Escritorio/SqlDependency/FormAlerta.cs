@@ -23,8 +23,12 @@ namespace Embarque_Escritorio.SqlDependency
         {
             InitializeComponent();
         }
+        //SI HAY ALGUN PROBLEMA DE AUTORIZACION DEL USUARIO
+        //--Establecer autorización
+        //CORRER ESTA CONSULTA EN EL SQL SERVER
+        //ALTER AUTHORIZATION ON DATABASE::SoporteTecnico TO sa;
         public SqlTableDependency<Personal> people_table_dependency;
-        private string connection_string_people = ConfigurationManager.AppSettings.Get("CadenaConeccionSoporte");
+        private string connection_string_people = ConfigurationManager.AppSettings.Get("CadenaConeccionSoporteW");
         //string connection_string_people2 = "Data Source=ABRAHAM-VAIO;Initial Catalog = SoporteTecnico; Persist Security Info=True;User ID = sa; Password=cuevas135";
         SqlConnection conexion = null;
         private void FormAlerta_Load(object sender, EventArgs e)

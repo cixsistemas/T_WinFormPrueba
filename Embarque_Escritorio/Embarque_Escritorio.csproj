@@ -104,6 +104,12 @@
     <Compile Include="Acercade.Designer.cs">
       <DependentUpon>Acercade.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contabilidad\PruebaConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\PruebaConta.Designer.cs">
+      <DependentUpon>PruebaConta.cs</DependentUpon>
+    </Compile>
     <Compile Include="HojaRuta\MTC.DataAccess\HojaRutaData.cs" />
     <Compile Include="HojaRuta\CsConductor.cs" />
     <Compile Include="HojaRuta\CsCredenciales.cs" />
@@ -263,6 +269,9 @@
     </Compile>
     <EmbeddedResource Include="Acercade.resx">
       <DependentUpon>Acercade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\PruebaConta.resx">
+      <DependentUpon>PruebaConta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HojaRuta\FrmDesencriptar.resx">
       <DependentUpon>FrmDesencriptar.cs</DependentUpon>
