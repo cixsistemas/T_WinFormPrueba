@@ -23,7 +23,7 @@ namespace Embarque_Escritorio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FrmMenuPasajes());
-            Application.Run(new FrmExcel2());
+            Application.Run(new FrmExcel());
         }
     }
 }
