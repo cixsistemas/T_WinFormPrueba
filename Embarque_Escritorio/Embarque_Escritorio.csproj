@@ -59,6 +59,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\AxInterop.ZKFPEngXControl.dll</HintPath>
     </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic">
       <Private>True</Private>
     </Reference>
@@ -73,6 +77,10 @@
     <Reference Include="Servicios, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\Servicios.dll</HintPath>
+    </Reference>
+    <Reference Include="SpreadsheetLight, Version=3.4.9.0, Culture=neutral, PublicKeyToken=32fbb46dc1730c57, processorArchitecture=MSIL">
+      <HintPath>..\packages\SpreadsheetLight.3.4.9\lib\SpreadsheetLight.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -89,6 +97,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -253,6 +262,20 @@
     <Compile Include="SqlDependency\FormAlerta1.Designer.cs">
       <DependentUpon>FormAlerta1.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubirExcel\FrmExcel2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubirExcel\FrmExcel2.designer.cs">
+      <DependentUpon>FrmExcel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubirExcel\FrmExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubirExcel\FrmExcel.Designer.cs">
+      <DependentUpon>FrmExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubirExcel\Importar.cs" />
+    <Compile Include="SubirExcel\PersonasViewModel.cs" />
     <Compile Include="Sunat\TipoCambio\DBApi.cs" />
     <Compile Include="Sunat\TipoCambio\ETipoCambio.cs" />
     <Compile Include="Sunat\TipoCambio\TipoCambio.cs">
@@ -353,6 +376,12 @@
     <EmbeddedResource Include="SqlDependency\FormAlerta1.resx">
       <DependentUpon>FormAlerta1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubirExcel\FrmExcel2.resx">
+      <DependentUpon>FrmExcel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubirExcel\FrmExcel.resx">
+      <DependentUpon>FrmExcel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sunat\TipoCambio\TipoCambio.resx">
       <DependentUpon>TipoCambio.cs</DependentUpon>
     </EmbeddedResource>
@@ -408,6 +437,7 @@
     <None Include="Service References\ServiceReference2\WSServiciosHR.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\DocumentFormat.OpenXml.dll" />
     <Content Include="bin\Debug\policia.dll" />
     <Content Include="HojaRuta\CredencialesHR.txt" />
     <Content Include="Imagenes\bus.ico" />

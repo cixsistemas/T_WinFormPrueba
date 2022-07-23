@@ -105,6 +105,9 @@ namespace Embarque_Escritorio
             Application.Exit();
         }
 
-        
+        private void FrmMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
