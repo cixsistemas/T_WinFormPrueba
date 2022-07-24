@@ -55,6 +55,10 @@
     <ApplicationIcon>Imagenes\bus.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AccesoDatos, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\AccesoDatos.dll</HintPath>
+    </Reference>
     <Reference Include="AxInterop.ZKFPEngXControl, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\AxInterop.ZKFPEngXControl.dll</HintPath>
@@ -132,6 +136,19 @@
     </Compile>
     <Compile Include="Contabilidad\PruebaConta.Designer.cs">
       <DependentUpon>PruebaConta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatagridView\CsCargar.cs" />
+    <Compile Include="DatagridView\FrmDgvListar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatagridView\FrmDgvListar.Designer.cs">
+      <DependentUpon>FrmDgvListar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatagridView\FrmDgvListarDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatagridView\FrmDgvListarDetalle.Designer.cs">
+      <DependentUpon>FrmDgvListarDetalle.cs</DependentUpon>
     </Compile>
     <Compile Include="HojaRuta\MTC.DataAccess\HojaRutaData.cs" />
     <Compile Include="HojaRuta\CsConductor.cs" />
@@ -317,6 +334,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contabilidad\PruebaConta.resx">
       <DependentUpon>PruebaConta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatagridView\FrmDgvListar.resx">
+      <DependentUpon>FrmDgvListar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DatagridView\FrmDgvListarDetalle.resx">
+      <DependentUpon>FrmDgvListarDetalle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HojaRuta\FrmDesencriptar.resx">
       <DependentUpon>FrmDesencriptar.cs</DependentUpon>
