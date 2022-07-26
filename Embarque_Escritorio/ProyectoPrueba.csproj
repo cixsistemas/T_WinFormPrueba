@@ -106,6 +106,7 @@
       <HintPath>..\packages\System.IO.Packaging.4.7.0\lib\net46\System.IO.Packaging.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
@@ -302,6 +303,14 @@
     </Compile>
     <Compile Include="SubirExcel\Importar.cs" />
     <Compile Include="SubirExcel\PersonasViewModel.cs" />
+    <Compile Include="Sunat\ConsultaRuc\CsSunat.cs" />
+    <Compile Include="Sunat\ConsultaRuc\FrmConsultaRuc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sunat\ConsultaRuc\FrmConsultaRuc.Designer.cs">
+      <DependentUpon>FrmConsultaRuc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sunat\ConsultaRuc\rucViewModel.cs" />
     <Compile Include="Sunat\TipoCambio\DBApi.cs" />
     <Compile Include="Sunat\TipoCambio\ETipoCambio.cs" />
     <Compile Include="Sunat\TipoCambio\TipoCambio.cs">
@@ -413,6 +422,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubirExcel\FrmExcel.resx">
       <DependentUpon>FrmExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sunat\ConsultaRuc\FrmConsultaRuc.resx">
+      <DependentUpon>FrmConsultaRuc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sunat\TipoCambio\TipoCambio.resx">
       <DependentUpon>TipoCambio.cs</DependentUpon>

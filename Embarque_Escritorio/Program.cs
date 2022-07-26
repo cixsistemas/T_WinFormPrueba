@@ -7,6 +7,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Embarque_Escritorio.SubirExcel;
 using Embarque_Escritorio.DatagridView;
+using Embarque_Escritorio.Sunat.ConsultaRuc;
 //using Embarque_Escritorio.Listar;
 
 
@@ -24,7 +25,7 @@ namespace Embarque_Escritorio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FrmMenuPasajes());
-            Application.Run(new FrmDgvListar());
+            Application.Run(new FrmConsultaRuc());
         }
     }
 }
