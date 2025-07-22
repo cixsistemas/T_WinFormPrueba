@@ -250,6 +250,12 @@
     <Compile Include="FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="PDF\FormPDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDF\FormPDF.Designer.cs">
+      <DependentUpon>FormPDF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Programacion.cs">
       <SubType>Form</SubType>
@@ -391,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDF\FormPDF.resx">
+      <DependentUpon>FormPDF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Programacion.resx">
       <DependentUpon>Programacion.cs</DependentUpon>
